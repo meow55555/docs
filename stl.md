@@ -1,7 +1,4 @@
 # STL (SSH Tunnel Lib, core library) usage
-
-# writted in go, provides windows, linux and macOS binary
-
 ## client side
 ```
 stl connect <port>         -- establishes ssh tunnel
