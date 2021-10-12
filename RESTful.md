@@ -36,17 +36,20 @@ Get verbose status
     "10.1.1.1": {
         "status": "ok",
         "uptime": "86400",
-        "reconnect_times": "5"
+        "reconnect_times": "5",
+        "role": "client"
     },
     "10.1.1.2": {
         "status": "ok",
         "uptime": "1234",
-        "reconnect_times": "10"
+        "reconnect_times": "10",
+        "role": "host"
     }
     "10.1.1.3": {
         "status": "failed",
         "uptime": "0",
-        "reconnect_times": "100"
+        "reconnect_times": "100",
+        "role": "client"
     }
 }
 ```
@@ -140,3 +143,39 @@ Tell the server you are reconnecting to the ssh tunnel.
 
 The error messages are the same as `GET`.
 
+### /host
+Header should contain `Authorization: Bearer <user token>`
+
+`POST /host`
+Tell the server you want to be the host, if the host has retired, you can be the new host.
+
+**request**
+```
+{}
+```
+
+**response**
+```
+{"status": "ok"}
+```
+
+```
+{"status": "failed", "message": "Host is some one else now."}
+```
+
+`DELETE /host`
+Tell the server you don't want to be the host and allow others to be the new host.
+
+**request**
+```
+{}
+```
+
+**response**
+```
+{"status": "ok"}
+```
+
+```
+{"status": "failed", "message": "You are not host."}
+```
