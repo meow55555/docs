@@ -110,6 +110,25 @@ The error messages can be:
  - Server does not allow new connection now. (*from backend server*)
  - No resources are available. (*from ssh tunnel lib*)
 
+`POST /api/connect`
+Tell the server you are going to connect to ssh tunnel.
+
+**request**
+```
+{}
+```
+
+**response**
+```
+{"status": "ok"}
+```
+
+```
+{"status": "fail", "message": "Invalid token."}
+```
+
+The error messages are the same as `GET`.
+
 `DELETE /api/connect`
 Tell the server you are disconnecting from the ssh tunnel.
 
