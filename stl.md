@@ -29,7 +29,6 @@ stl key renew                                                 -- generates a new
 
 # server side
 ```
-stl disconnect <keySHA256>     -- disconnects(delete unix socket)
 stl key add <key>              -- adds a ssh public key (only exec in server side)
 stl key remove <keySHA256>     -- remove key be its sha256 hash
 ```
