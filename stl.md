@@ -23,15 +23,13 @@ ssh tunnel 必須由 client 和 host 發起，連線到 vps（server）。client
 # client side
 ```
 stl connect "host"|"client" <localPort:serverIP:serverPort>   -- establishes ssh tunnel
-stl disconnect <port>                                         -- disconnects
 stl key                                                       -- returns ssh publish key(stdout)
 stl key renew                                                 -- generates a new pair of key, replace the old one
-stl status                                                    -- sets status (client)
 ```
 
 # server side
 ```
-stl key add <key>          -- adds a ssh public key (only exec in server side)
-stl key remove <keyMD5>    -- remove key be its sha256 hash
-stl status [keyMD5]           -- gets status(on/off, uptime, reconnect times) according to ssh key (for server), returns all if key is not provided
+stl disconnect <keySHA256>     -- disconnects(delete unix socket)
+stl key add <key>              -- adds a ssh public key (only exec in server side)
+stl key remove <keySHA256>     -- remove key be its sha256 hash
 ```
