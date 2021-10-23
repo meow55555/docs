@@ -32,6 +32,6 @@ stl status                                                    -- sets status (cl
 # server side
 ```
 stl key add <key>          -- adds a ssh public key (only exec in server side)
-stl key remove <keyMD5>    -- remove key be its md5 hash
+stl key remove <keyMD5>    -- remove key be its sha256 hash
 stl status [key]           -- gets status(on/off, uptime, reconnect times) according to ssh key (for server), returns all if key is not provided
 ```
