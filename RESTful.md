@@ -4,7 +4,7 @@ by siriuskoan
 ## bot
 Header should contain `Authorization: Bearer <user token>`.
 ### /status
-`GET /status`
+`GET /api/status`
 Get simplified status
 
 **request**
@@ -22,7 +22,7 @@ Get simplified status
 }
 ```
 
-`GET /status?mode=verbose`
+`GET /api/status?mode=verbose`
 Get verbose status
 
 **request**
@@ -36,17 +36,20 @@ Get verbose status
     "10.1.1.1": {
         "status": "ok",
         "uptime": "86400",
-        "reconnect_times": "5"
+        "reconnect_times": "5",
+        "role": "client"
     },
     "10.1.1.2": {
         "status": "ok",
         "uptime": "1234",
-        "reconnect_times": "10"
+        "reconnect_times": "10",
+        "role": "host"
     }
     "10.1.1.3": {
         "status": "failed",
         "uptime": "0",
-        "reconnect_times": "100"
+        "reconnect_times": "100",
+        "role": "client"
     }
 }
 ```
@@ -58,7 +61,7 @@ notes:
 ## client
 Header should contain `Authorization: Bearer <user token>` except for `/login`
 ### /login
-`POST /login`
+`POST /api/login`
 
 **request**
 ```
@@ -86,7 +89,7 @@ The error message can be:
  - Wrong password (*from backend server*)
 
 ### /connect
-`GET /connect`
+`GET /api/connect`
 Get connection status.
 
 **request**
@@ -107,7 +110,7 @@ The error messages can be:
  - Server does not allow new connection now. (*from backend server*)
  - No resources are available. (*from ssh tunnel lib*)
 
-`DELETE /connect`
+`DELETE /api/connect`
 Tell the server you are disconnecting from the ssh tunnel.
 
 **request**
@@ -121,7 +124,7 @@ The response is useless.
 {"status": "ok"}
 ```
 
-`PUT /connect`
+`PUT /api/connect`
 Tell the server you are reconnecting to the ssh tunnel.
 
 **request**
@@ -140,3 +143,39 @@ Tell the server you are reconnecting to the ssh tunnel.
 
 The error messages are the same as `GET`.
 
+### /host
+Header should contain `Authorization: Bearer <user token>`
+
+`POST /api/host`
+Tell the server you want to be the host, if the host has retired, you can be the new host.
+
+**request**
+```
+{}
+```
+
+**response**
+```
+{"status": "ok"}
+```
+
+```
+{"status": "failed", "message": "Host is some one else now."}
+```
+
+`DELETE /api/host`
+Tell the server you don't want to be the host and allow others to be the new host.
+
+**request**
+```
+{}
+```
+
+**response**
+```
+{"status": "ok"}
+```
+
+```
+{"status": "failed", "message": "You are not host."}
+```
