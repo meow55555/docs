@@ -22,11 +22,11 @@ ssh tunnel 必須由 client 和 host 發起，連線到 vps（server）。client
 
 # client side
 ```
-stl connect <port>         -- establishes ssh tunnel
-stl disconnect <port>      -- disconnects
-stl key                    -- returns ssh publish key(stdout)
-stl key renew              -- generates a new pair of key, replace the old one
-stl status                 -- sets status (client)
+stl connect "host"|"client" <localPort:serverIP:serverPort>   -- establishes ssh tunnel
+stl disconnect <port>                                         -- disconnects
+stl key                                                       -- returns ssh publish key(stdout)
+stl key renew                                                 -- generates a new pair of key, replace the old one
+stl status                                                    -- sets status (client)
 ```
 
 # server side
