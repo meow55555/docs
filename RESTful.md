@@ -76,14 +76,14 @@ Header should contain `Authorization: Bearer <user token>` except for `/login`
 **response**
 ```
 {
-	"status": "ok",
+	"status": "OK",
 	"token": "<user token>"
 }
 ```
 
 ```
 {
-	"status": "failed",
+	"status": "Failed",
 	"message": "Wrong password"
 }
 ```
@@ -101,11 +101,11 @@ Get connection status.
 
 **response**
 ```
-{"status": "ok"}
+{"status": "OK"}
 ```
 
 ```
-{"status": "fail", "message": "Invalid token."}
+{"status": "Failed", "message": "Invalid token."}
 ```
 The error messages can be:
  - Invalid token. (*from backend server*)
@@ -122,11 +122,11 @@ Tell the server you are going to connect to ssh tunnel.
 
 **response**
 ```
-{"status": "ok"}
+{"status": "OK"}
 ```
 
 ```
-{"status": "fail", "message": "Invalid token."}
+{"status": "Failed", "message": "Invalid token."}
 ```
 
 The error messages are the same as `GET`.
@@ -142,7 +142,7 @@ Tell the server you are disconnecting from the ssh tunnel.
 **response**
 The response is useless.
 ```
-{"status": "ok"}
+{"status": "OK"}
 ```
 
 `PUT /api/connect`
@@ -155,11 +155,11 @@ Tell the server you are reconnecting to the ssh tunnel.
 
 **response**
 ```
-{"status": "ok"}
+{"status": "OK"}
 ```
 
 ```
-{"status": "fail", "message": "Invalid token."}
+{"status": "Failed", "message": "Invalid token."}
 ```
 
 The error messages are the same as `GET`.
@@ -177,11 +177,11 @@ Tell the server you want to be the host, if the host has retired, you can be the
 
 **response**
 ```
-{"status": "ok"}
+{"status": "OK"}
 ```
 
 ```
-{"status": "failed", "message": "Host is some one else now."}
+{"status": "Failed", "message": "Host is some one else now."}
 ```
 
 `DELETE /api/host`
@@ -194,9 +194,9 @@ Tell the server you don't want to be the host and allow others to be the new hos
 
 **response**
 ```
-{"status": "ok"}
+{"status": "OK"}
 ```
 
 ```
-{"status": "failed", "message": "You are not host."}
+{"status": "Failed", "message": "You are not host."}
 ```
