@@ -15,10 +15,14 @@ Get simplified status
 **response**
 ```
 {
-   "10.1.1.1":"OK",
-   "10.1.1.2":"OK",
-   "10.1.1.3":"Failed",
-   "10.1.1.4":"OK"
+    {
+        "IP": "10.1.1.1",
+        "status": True
+    },
+    {
+        "IP": "10.1.1.2",
+        "status": False
+    }
 }
 ```
 
