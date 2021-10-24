@@ -15,10 +15,14 @@ Get simplified status
 **response**
 ```
 {
-   "10.1.1.1":"ok",
-   "10.1.1.2":"ok",
-   "10.1.1.3":"fail",
-   "10.1.1.4":"ok"
+    {
+        "IP": "10.1.1.1",
+        "status": True
+    },
+    {
+        "IP": "10.1.1.2",
+        "status": False
+    }
 }
 ```
 
@@ -33,23 +37,21 @@ Get verbose status
 **response**
 ```
 {
-    "10.1.1.1": {
-        "status": "ok",
+    {
+        "IP": "10.1.1.1"
+        "status": True,
+        "active": True,
         "uptime": "86400",
         "reconnect_times": "5",
-        "role": "client"
+        "role": "client",
     },
-    "10.1.1.2": {
-        "status": "ok",
+    {
+        "IP": "10.1.1.2",
+        "status": True,
+        "active": False,
         "uptime": "1234",
         "reconnect_times": "10",
         "role": "host"
-    }
-    "10.1.1.3": {
-        "status": "failed",
-        "uptime": "0",
-        "reconnect_times": "100",
-        "role": "client"
     }
 }
 ```
